@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: Assets/Generated/InputSystem_Actions.cs
   wrapperClassName: InputSystem_Actions
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: Banchy
