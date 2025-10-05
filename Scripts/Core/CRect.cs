@@ -5,12 +5,13 @@ using UnityEngine;
 
 namespace Blaze
 {
+    [System.Serializable]
     public struct CRect : IFormattable, IEquatable<CRect>
     {
-        private float m_X;
-        private float m_Y;
-        private float m_Width;
-        private float m_Height;
+        [SerializeField] private float m_X;
+        [SerializeField] private float m_Y;
+        [SerializeField] private float m_Width;
+        [SerializeField] private float m_Height;
 
 
         public float X

@@ -1,3 +1,4 @@
+using Blaze;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,28 +18,46 @@ namespace Banchy
         public Systems systems;
         
         public _World world;
+
+        public Effects effects;
+        
+        public SceneInjection sceneInjection;
+        public CGizmos cGizmos;
+        
+        public Resetter resetter;
+        public GameStateContainer state;
+        
+        public CameraManager cameraManager;
+        public DialogManager dialogManager;
+        public PauseManager pauseManager;
         
         private void Awake()
         {
             Instance = this;
             
-            input = new DesktopInput();
-            systems = new Systems();
+            Time.timeScale = 1f;
             
+            state = new GameStateContainer();
+            systems = new Systems();
+            pauseManager = new PauseManager();
+            
+            state.Init();
             content.Init();
             systems.Init();
             world.Init();
-            player.Init();
+            effects.Init();
             input.Init();
             ui.Init();
+            dialogManager.Init();
         }
 
         private void Update()
         {
             input._Update();
-            player._Update();
             systems._Update();
             ui._Update();
+            cameraManager._Update();
+            dialogManager._Update();
         }
     }
 }

@@ -16,14 +16,24 @@ namespace Banchy
 
         public void _Update()
         {
-            BonfireBuilding bonfire = (BonfireBuilding)Vars.Instance.systems.buildingSystem.Buildings.FirstOrDefault(b => b is BonfireBuilding);
-            if (bonfire == null)
+            List<BonfireBuilding> bonfires = Vars.Instance.systems.BuildingSystem.Bonfires;
+            
+            if (bonfires.Count == 0)
             {
                 text.text = "No Bonfires Burning";
             }
             else
             {
-                text.text = $"Bonfire Burning Time: {bonfire.RemainingTime}";
+                BonfireBuilding dieSoon = bonfires.First();            
+                foreach (BonfireBuilding b in bonfires)
+                {
+                    if (dieSoon.RemainingTime >= b.RemainingTime)
+                    {
+                        dieSoon = b;
+                    }
+                }
+                
+                text.text = $"Bonfire Burning Time: {dieSoon.RemainingTime}";
             }
         }
     }

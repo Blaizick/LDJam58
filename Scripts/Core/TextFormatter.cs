@@ -6,7 +6,7 @@ namespace Blaze
         public const string thousand = "K.";
         public const string million = "M.";
 
-        public static string Format(float count)
+        public static string FormatCurrency(float count)
         {
             float thousands = count / 1000;
             float millions = count / 1000000;

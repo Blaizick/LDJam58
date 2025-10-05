@@ -5,12 +5,7 @@ namespace Blaze
 {
     public class CGizmos : MonoBehaviour
     {
-        public Queue<GizmosRequest> InstantRequests { get; private set; }
-
-        public void Init()
-        {
-            InstantRequests = new();
-        }
+        public Queue<GizmosRequest> InstantRequests { get; private set; } = new();
 
         public void OnDrawGizmos()
         {
@@ -42,12 +37,12 @@ namespace Blaze
 
         public abstract void Execute();
     }
-    public class RectangleRequest : GizmosRequest
+    public class DrawRectangleRequest : GizmosRequest
     {
         public Vector2 Center { get; set; }
         public Vector2 Size { get; set; }
 
-        public RectangleRequest(Vector2 center, Vector2 size, Color color) : base(color)
+        public DrawRectangleRequest(Vector2 center, Vector2 size, Color color) : base(color)
         {
             Center = center;
             Size = size;
@@ -56,6 +51,23 @@ namespace Blaze
         public override void Execute()
         {
             Gizmos.DrawWireCube(Center, Size);
+        }
+    }
+
+    public class DrawCircleRequest : GizmosRequest
+    {
+        public Vector2 Position { get; set; }
+        public float Radius { get; set; }
+
+        public DrawCircleRequest(Vector2 position, float radius, Color color) : base(color)
+        {
+            Position = position;
+            Radius = radius;
+        }
+
+        public override void Execute()
+        {
+            Gizmos.DrawWireSphere(Position, Radius);
         }
     }
 }

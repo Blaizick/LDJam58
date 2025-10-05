@@ -5,11 +5,11 @@ namespace Banchy
 {
     public class BuildingsBootstrap : MonoBehaviour
     {
-        public List<MonoBuilding> items = new();
+        public List<BuildingBoostrap> buildings = new();
         
         public void Init()
         {
-            foreach (MonoBuilding build in items)
+            foreach (BuildingBoostrap build in buildings)
             {
                 build.Init();
             }
